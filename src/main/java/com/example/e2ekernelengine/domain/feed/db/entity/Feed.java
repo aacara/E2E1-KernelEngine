@@ -1,7 +1,7 @@
 package com.example.e2ekernelengine.domain.feed.db.entity;
 
+import com.example.e2ekernelengine.domain.blog.db.entity.Blog;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.example.e2ekernelengine.domain.blog.db.entity.Blog;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "feed")
 public class Feed {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "feed_id", columnDefinition = "BIGINT", nullable = false)
@@ -48,9 +46,13 @@ public class Feed {
 	@Column(name = "feed_description", columnDefinition = "TEXT")
 	private String feedDescription;
 
+	@Column(name = "feed_visit_count")
+
+	private Integer feedVisitCount;
+
 	@Builder
 	public Feed(Long feedId, Blog blog, String feedUrl, String feedTitle, String feedDescription, String feedContent,
-			Timestamp feedCreatedAt) {
+			Timestamp feedCreatedAt, Integer feedVisitCount) {
 		this.feedId = feedId;
 		this.blog = blog;
 		this.feedUrl = feedUrl;
@@ -58,5 +60,14 @@ public class Feed {
 		this.feedDescription = feedDescription;
 		this.feedContent = feedContent;
 		this.feedCreatedAt = feedCreatedAt;
+		this.feedVisitCount = feedVisitCount;
+	}
+
+	public void increaseVisitCount() {
+		this.feedVisitCount++;
+	}
+
+	public void resetVisitCount() {
+		this.feedVisitCount = 0;
 	}
 }
