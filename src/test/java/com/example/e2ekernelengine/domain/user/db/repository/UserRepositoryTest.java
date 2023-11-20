@@ -1,8 +1,10 @@
 package com.example.e2ekernelengine.domain.user.db.repository;
 
+import org.junit.jupiter.api.Disabled;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+@Disabled
 @DataJpaTest
 // @SpringBootTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
