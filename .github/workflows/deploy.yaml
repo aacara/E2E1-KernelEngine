@@ -3,7 +3,7 @@ name: CI-CD
 on:
   push:
     branches:
-      - "feat/#94"
+      - feat/%2394
 env:
   S3_BUCKET_NAME: s3-test01bucket
   CODE_DEPLOY_APPLICATION_NAME: CODE-DEPLOY-TEST01
