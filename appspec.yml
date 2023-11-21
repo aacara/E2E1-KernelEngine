@@ -1,3 +1,8 @@
+DEPLOY_DIR="/home/ubuntu/github_action"
+
+echo "기존 배포 파일 정리 중..."
+rm -rf $DEPLOY_DIR/*
+
 version: 0.0
 os: linux
 files:
