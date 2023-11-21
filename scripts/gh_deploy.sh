@@ -17,6 +17,10 @@ cp $BUILD_JAR $DEPLOY_PATH
 echo "> 현재 동작중인 어플리케이션 pid 체크" >> $DEPLOY_LOG_PATH
 CURRENT_PID=$(pgrep -f $JAR_NAME)
 
+if [ -f "/home/ubuntu/github_action/.gitmessage.txt" ]; then
+  rm "/home/ubuntu/github_action/.gitmessage.txt"
+fi
+
 if [ -z $CURRENT_PID ]
 then
   echo "> 현재 동작중인 어플리케이션 존재 X" >> $DEPLOY_LOG_PATH
