@@ -5,8 +5,8 @@ on:
     branches:
       - feat/#94
 env:
-  S3_BUCKET_NAME: s3-test01bucket
-  CODE_DEPLOY_APPLICATION_NAME: CODE-DEPLOY-TEST01
+  S3_BUCKET_NAME: s3-test02bucket
+  CODE_DEPLOY_APPLICATION_NAME: CODE-DEPLOY-TEST02
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: CODE-DEPLOY-GROUP
 
 jobs:
@@ -51,3 +51,13 @@ jobs:
           --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
           --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
           --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$GITHUB_SHA.zip
+
+      - name: Build and Deploy
+        run: ./gradlew build
+        env:
+          COOKIE_NAME: ${{ secrets.COOKIE_NAME }}
+          COOKIE_REFRESH_NAME: ${{ secrets.COOKIE_REFRESH_NAME }}
+          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+          MYSQL_DATABASE_PASSWORD: ${{ secrets.MYSQL_DATABASE_PASSWORD }}
+          MYSQL_DATABASE_URL: ${{ secrets.MYSQL_DATABASE_URL }}
+          MYSQL_DATABASE_USERNAME: ${{ secrets.MYSQL_DATABASE_USERNAME }}
