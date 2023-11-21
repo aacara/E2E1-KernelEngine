@@ -1,6 +1,6 @@
 #!/bin/bash
-PROJECT_NAME="E2E1-KernelEngine"
-JAR_PATH="/home/ubuntu/E2E1-KernelEngine/build/libs/*.jar"
+PROJECT_NAME="github_action"
+JAR_PATH="/home/ubuntu/github_action/build/libs/*.jar"
 DEPLOY_PATH=/home/ubuntu/$PROJECT_NAME/
 DEPLOY_LOG_PATH="/home/ubuntu/$PROJECT_NAME/deploy.log"
 DEPLOY_ERR_LOG_PATH="/home/ubuntu/$PROJECT_NAME/deploy_err.log"
