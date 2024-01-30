@@ -47,7 +47,10 @@ public class FeedController {
 		return "searchResults";
 	}
 
-	private void prepareModel(Model model, Page<FeedPageableResponse> feedPage, String keyword,
+	private void prepareModel(
+			Model model,
+			Page<FeedPageableResponse> feedPage,
+			String keyword,
 			String selectedSortOption) {
 		int currentPage = feedPage.getNumber();
 		int totalPages = feedPage.getTotalPages();
@@ -58,6 +61,7 @@ public class FeedController {
 		model.addAttribute("query", keyword);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
+		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("selectedSortOption", selectedSortOption);
 	}
 
